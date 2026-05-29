@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply min-h-screen bg-[#f6f7fb] text-quiz-ink antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(66, 85, 255, 0.10), transparent 32rem),
+      linear-gradient(180deg, #ffffff 0, #f6f7fb 18rem);
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .page {
+    @apply mx-auto w-[min(1220px,calc(100%-32px))] py-6 outline-none;
+  }
+
+  .panel {
+    @apply rounded-card border border-quiz-line bg-white p-5 shadow-[0_1px_0_rgba(36,43,79,0.04)];
+  }
+
+  .glass-panel {
+    @apply rounded-card border border-white/70 bg-white/85 p-5 shadow-soft backdrop-blur;
+  }
+
+  .primary-btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-card bg-quiz-blue px-4 font-black text-white shadow-[0_10px_24px_rgba(66,85,255,0.24)] transition hover:-translate-y-0.5 hover:bg-[#2c3bd8];
+  }
+
+  .ghost-btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-card border border-quiz-line bg-white px-4 font-black text-quiz-ink transition hover:-translate-y-0.5 hover:border-quiz-blue hover:bg-[#eef1ff];
+  }
+
+  .danger-btn {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-card bg-[#ffe9e9] px-4 font-black text-[#d94d4d] transition hover:bg-[#ffdede];
+  }
+
+  .eyebrow {
+    @apply mb-2 text-xs font-black uppercase tracking-normal text-quiz-blue;
+  }
+
+  .hero-title {
+    @apply mb-4 text-[clamp(2rem,5vw,4.4rem)] font-black leading-none tracking-normal;
+  }
+
+  .muted {
+    @apply text-quiz-muted;
+  }
+
+  .badge {
+    @apply inline-flex min-h-7 w-fit items-center rounded-full bg-[#eef1ff] px-3 text-sm font-black text-quiz-blue;
+  }
+
+  .icon-tile {
+    @apply grid size-11 place-items-center rounded-card bg-[#eef1ff] text-quiz-blue;
+  }
+
+  .icon-btn {
+    @apply inline-grid size-11 place-items-center rounded-card border border-quiz-line bg-white text-quiz-ink transition hover:-translate-y-0.5 hover:border-quiz-blue hover:bg-[#eef1ff] hover:text-quiz-blue active:translate-y-0;
+  }
+
+  .icon-btn-active {
+    @apply border-quiz-blue bg-[#eef1ff] text-quiz-blue shadow-[0_8px_22px_rgba(66,85,255,0.16)];
+  }
+
+  .flip-scene {
+    perspective: 1400px;
+  }
+
+  .flip-card {
+    transform-style: preserve-3d;
+    transition: transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms ease, translate 220ms ease;
+  }
+
+  .flip-card.is-flipped {
+    transform: rotateY(180deg);
+  }
+
+  .flip-face {
+    backface-visibility: hidden;
+  }
+
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+
+  .input {
+    @apply min-h-11 w-full rounded-card border border-quiz-line bg-white px-3 outline-none focus:border-quiz-blue focus:ring-4 focus:ring-quiz-blue/10;
+  }
+
+  .page-motion {
+    animation: fade-slide-up 420ms ease both;
+  }
+}
+
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 180ms ease both;
+}
+
+.animate-scale-in {
+  animation: scale-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-toast-in {
+  animation: toast-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
