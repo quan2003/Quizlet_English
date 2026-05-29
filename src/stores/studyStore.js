@@ -11,7 +11,9 @@ export const useStudyStore = create((set, get) => ({
   startLearn: (setId, cards, progressGetter) => set({
     learnSession: {
       setId,
-      queue: cards.map((card) => ({ card, correctCount: progressGetter(card.id).correct_streak || 0 })),
+      queue: cards
+        .map((card) => ({ card, correctCount: progressGetter(card.id).correct_streak || 0 }))
+        .sort(() => Math.random() - 0.5),
       current: null,
       correct: 0,
       wrong: 0,

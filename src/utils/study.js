@@ -1,10 +1,10 @@
-export function makeOptions(correctCard, cards) {
+export function makeOptions(correctCard, cards, field = "definition") {
   const wrong = cards
     .filter((card) => card.id !== correctCard.id)
     .sort(() => Math.random() - 0.5)
     .slice(0, 3)
-    .map((card) => card.definition);
-  return [...wrong, correctCard.definition].sort(() => Math.random() - 0.5);
+    .map((card) => card[field]);
+  return [...wrong, correctCard[field]].sort(() => Math.random() - 0.5);
 }
 
 export function normalize(value) {
